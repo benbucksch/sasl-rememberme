@@ -2,7 +2,7 @@ title: "SASL Remember Me"
 abbrev: "sasl-rememberme"
 category: info
 
-docname: draft-bucksch-sasl-rememberme
+docname: draft-bucksch-sasl-rememberme-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
