@@ -49,40 +49,40 @@ time-consuming SASL login mechanism that involves the user.
 
 # Introduction
 
-A client application might log in to a server the first time using
+A client application might at first log in to a server using
 Passkey or multi-factor authentication. However, these mechanisms
 require complicated user interaction. These are too costly to
-perform at every login, but can realistically only be
+perform at every login. They can realistically only be
 completed once during setup. To stay logged in, this SASL
 mechanism allows the server to create a client-specific token that
 the client application can then use to log in to the same account,
-without user interaction.
+without further user interaction.
 
 The token is opaque to the client and the server can choose how to
 implement it. It may be a custom random string that the server
-stores, or an application-specific password together with the
-username, or a JWT token, or a refresh token which does not expire.
+stores, or an application-specific password generated for this
+client together with the username, or a JWT token, or a
+refresh token which does not expire.
 
 # Creation of the token
 
 The client requests the token from the server using either
-1. application-specific commands, like IMAP `REMEMBERME` or
-likewise in XMPP, which are to be defined in other standards.
-2. the success resppnse of another SASL mechanism.
+1. application-specific commands, like IMAP `REMEMBERME`,
+which are to be defined in other standards.
+2. the success response of another SASL mechanism.
 
-The client stores the token for this hostname, similar to a
-password, in a client-specific storage that is as secure as a
-password storage.
+The client stores the token, instead of a password,
+in a client-specific storage that is as secure as a password
+storage.
 
 # Login using the token
 
 1. If the client needs to log in and has a token for this user and
-host, it logs in using the SASL `REMEMBERME` mechanism, by sending:
+host, uses the SASL `REMEMBERME` mechanism to log in, by sending:
 
 `REMEMBERME <token>`
 
-2.
-  a. If the server accepts the response as valid and allows login,
+2. a. If the server accepts the response as valid and allows login,
   it responds with a SASL success response. The user is logged in.
 
   (ALTERNATIVE EXPIRY: ....
@@ -99,7 +99,7 @@ host, it logs in using the SASL `REMEMBERME` mechanism, by sending:
   then the client would not know which one to store, due to race
   conditions in the network response.)
 
-  b. If the response is invalid, the server responds with a
+2. b. If the response is invalid, the server responds with a
   SASL error and a human-readable error message for the end user.
 
 # IMAP Example
@@ -117,11 +117,11 @@ S: 23 OK AUTHENTICATE completed
 
 1. The token MUST also allow the server to infer the username. The
 token alone must be sufficient to log in.
-2. The token MUST not expire.
+2. The token MUST NOT expire.
 (ALTERNATIVE EXPIRY: The token MUST be valid for at least 30 days.)
-3. The server SHOULD be able to revoke a token of a specific user,
-in case this specific user account or device is compromised.
-In this case, the login MUST fails and the SASL error message
+3. The server SHOULD be able to revoke the tokens,
+in case this specific user account or device was compromised.
+In this case, the login MUST fail and the SASL error message
 MUST explain the situation to the user and give instructions
 how to remedy the situation.
 
