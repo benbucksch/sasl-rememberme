@@ -9,19 +9,19 @@ number:
 date:
 consensus: true
 v: 3
-area: AREA
-workgroup: WG Working Group
+area: "Security"
+workgroup: "Simple Authentication and Security Layer"
 keyword:
  - next generation
  - unicorn
  - sparkling distributed ledger
 venue:
-  group: WG
-  type: Working Group
-  mail: WG@example.com
-  arch: https://example.com/WG
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Simple Authentication and Security Layer"
+  type: "Working Group"
+  mail: "sasl@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/sasl"
+  github: "benbucksch/sasl-rememberme"
+  latest: "https://benbucksch.github.io/sasl-rememberme/draft-bucksch-sasl-rememberme.html"
 
 author:
  -
