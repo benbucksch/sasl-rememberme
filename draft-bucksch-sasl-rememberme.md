@@ -78,9 +78,12 @@ storage.
 # Login using the token
 
 1. If the client needs to log in and has a token for this user and
-host, uses the SASL `REMEMBERME` mechanism to log in, by sending:
+host, uses the SASL `REMEMBERME` mechanism to log in.
+`REMEMBERME` mechanism starts with the client sending the initial client response,
+which has the following format defined using ABNF:
 
-`REMEMBERME <token>`
+rememberme-client-step1 = token
+token                   = 1*OCTET
 
 2. a. If the server accepts the response as valid and allows login,
   it responds with a SASL success response. The user is logged in.
@@ -109,19 +112,23 @@ In IMAP, the exchange would be:
 S: * OK ACME IMAP Server v1.23 is ready
 C: 22 CAPABILITY
 S: 22 CAPABILITY IMAP4rev1 IMAP4rev2 AUTH=PASSKEY AUTH=REMEMBERME
-C: 23 AUTHENTICATE REMEMBERME AEC6576576557
+C: 23 AUTHENTICATE REMEMBERME QUVDNjU3NjU3NjU1Nwo=
 S: 23 OK AUTHENTICATE completed
 ```
 
+In the above example the token is "AEC6576576557" which is base64-encoded
+according to IMAP SASL profile.
+
 # Requirements on the token
 
-1. The token MUST also allow the server to infer the username. The
-token alone must be sufficient to log in.
+1. The token MUST also allow the server to infer the authentication identity.
+The token alone must be sufficient to log in.
+This SASL mechanism doesn't support separate authorization identities.
 2. The token MUST NOT expire.
 (ALTERNATIVE EXPIRY: The token MUST be valid for at least 30 days.)
 3. The server SHOULD be able to revoke the tokens,
 in case this specific user account or device was compromised.
-In this case, the login MUST fail and the SASL error message
+In this case, the authentication MUST fail and the SASL error message
 MUST explain the situation to the user and give instructions
 how to remedy the situation.
 
@@ -131,6 +138,8 @@ how to remedy the situation.
 
 
 # Security Considerations
+
+Clients should treat the token like a password and store it securely.
 
 TODO Security
 
