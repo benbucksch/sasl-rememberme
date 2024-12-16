@@ -146,8 +146,18 @@ TODO Security
 
 # IANA Considerations
 
-This document has no IANA actions.
+IANA is requested to add the following entries to the SASL Mechanism registry established by [RFC4422]:
 
+To: iana@iana.org
+Subject: Registration of a new SASL mechanism REMEMBERME
+
+SASL mechanism name (or prefix for the family): REMEMBERME
+Security considerations: Section YY of [RFCXXXX]
+Published specification (optional, recommended): [RFCXXXX]
+Person & email address to contact for further information: IETF Kitten WG <kitten@ietf.org>
+Intended usage: COMMON
+Owner/Change controller: IESG <iesg@ietf.org>
+Note:
 
 --- back
 
