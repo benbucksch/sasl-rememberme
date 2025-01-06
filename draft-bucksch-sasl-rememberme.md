@@ -121,7 +121,7 @@ according to IMAP SASL profile.
 
 # Requirements on the token
 
-1. The token MUST also allow the server to infer the authentication identity.
+1. The token MUST also allow the server to infer the authentication identity (e.g. username or email address).
 The token alone must be sufficient to log in.
 This SASL mechanism doesn't support separate authorization identities.
 2. The token MUST NOT expire.
