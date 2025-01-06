@@ -5,8 +5,8 @@
 kitten                                                        B. Bucksch
 Internet-Draft                                                    Beonex
 Intended status: Informational                                S. Farrell
-Expires: 5 June 2025                              Trinity College Dublin
-                                                         2 December 2024
+Expires: 10 July 2025                             Trinity College Dublin
+                                                          6 January 2025
 
 
                             SASL Remember Me
@@ -50,11 +50,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 June 2025.
+   This Internet-Draft will expire on 10 July 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,11 @@ Table of Contents
 3.  Login using the token
 
    1.  If the client needs to log in and has a token for this user and
-       host, uses the SASL REMEMBERME mechanism to log in, by sending:
+       host, uses the SASL REMEMBERME mechanism to log in.  REMEMBERME
+       mechanism starts with the client sending the initial client
+       response, which has the following format defined using ABNF:
 
-   REMEMBERME <token>
+   rememberme-client-step1 = token token = 1*OCTET
 
    1.  a.  If the server accepts the response as valid and allows login,
        it responds with a SASL success response.  The user is logged in.
@@ -136,21 +138,26 @@ Table of Contents
    In IMAP, the exchange would be: S: * OK ACME IMAP Server v1.23 is
    ready C: 22 CAPABILITY S: 22 CAPABILITY IMAP4rev1 IMAP4rev2
    AUTH=PASSKEY AUTH=REMEMBERME C: 23 AUTHENTICATE REMEMBERME
-   AEC6576576557 S: 23 OK AUTHENTICATE completed
+   QUVDNjU3NjU3NjU1Nwo= S: 23 OK AUTHENTICATE completed
+
+   In the above example the token is "AEC6576576557" which is
+   base64-encoded according to IMAP SASL profile.
 
 5.  Requirements on the token
 
-   1.  The token MUST also allow the server to infer the username.  The
-       token alone must be sufficient to log in.
+   1.  The token MUST also allow the server to infer the authentication
+       identity (e.g. username or email address).  The token alone must
+       be sufficient to log in.  This SASL mechanism doesn't support
+       separate authorization identities.
 
    2.  The token MUST NOT expire.  (ALTERNATIVE EXPIRY: The token MUST
        be valid for at least 30 days.)
 
    3.  The server SHOULD be able to revoke the tokens, in case this
        specific user account or device was compromised.  In this case,
-       the login MUST fail and the SASL error message MUST explain the
-       situation to the user and give instructions how to remedy the
-       situation.
+       the authentication MUST fail and the SASL error message MUST
+       explain the situation to the user and give instructions how to
+       remedy the situation.
 
 6.  Conventions and Definitions
 
@@ -161,6 +168,8 @@ Table of Contents
    capitals, as shown here.
 
 7.  Security Considerations
+
+   Clients should treat the token like a password and store it securely.
 
    TODO Security
 
