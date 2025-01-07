@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-05T00:04:28.978359+00:00",
+  "timestamp": "2025-01-07T00:04:43.679417+00:00",
   "repo": "benbucksch/sasl-rememberme",
   "labels": [
     {
@@ -56,26 +56,51 @@
       "id": "PR_kwDONXyy286F59EB",
       "title": "Use SASL specific terminology and separation between SASL protocol profiles",
       "url": "https://github.com/benbucksch/sasl-rememberme/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "aamelnikov",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "aamelnikov"
+      ],
       "labels": [],
       "body": "Also added initial Security Considerations.",
       "createdAt": "2024-12-20T11:54:06Z",
-      "updatedAt": "2024-12-20T11:54:06Z",
+      "updatedAt": "2025-01-06T15:09:04Z",
       "baseRepository": "benbucksch/sasl-rememberme",
       "baseRefName": "main",
       "baseRefOid": "b1c4c391ef96724bdef9683a7be50dcd802f74b4",
       "headRepository": "aamelnikov/sasl-rememberme",
       "headRefName": "correct_sasl_terminology",
-      "headRefOid": "0540c1830de875ac509852f34f2fe99f5497ebec",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a1f9b0f35b0998eaf5dd0921f44cac8d00afe0f0",
+      "closedAt": "2025-01-06T15:08:51Z",
+      "mergedAt": "2025-01-06T15:08:51Z",
+      "mergedBy": "benbucksch",
+      "mergeCommit": {
+        "oid": "7d56455119fd578e45b77c50a85257693d356a5e"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDONXyy286W8HfE",
+          "commit": {
+            "abbreviatedOid": "0540c18"
+          },
+          "author": "benbucksch",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-06T15:06:05Z",
+          "updatedAt": "2025-01-06T15:08:31Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\n1. The token MUST also allow the server to infer the authentication identity (e.g. username or email address).\r\n```",
+              "createdAt": "2025-01-06T15:06:05Z",
+              "updatedAt": "2025-01-06T15:08:31Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
