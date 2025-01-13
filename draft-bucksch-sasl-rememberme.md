@@ -105,6 +105,31 @@ token                   = 1*OCTET
 2. b. If the response is invalid, the server responds with a
   SASL error and a human-readable error message for the end user.
 
+server-final-message = server-error "," server-error-message
+        ; Only returned on error. Omitted on success.
+
+server-error = "e=" server-error-value
+
+server-error-value = "invalid-encoding" /
+                     "unknown-user" /
+                     "invalid-username-encoding" /
+                       ; invalid username encoding (invalid UTF-8 or
+                       ; SASLprep failed)
+                     "other-error" /
+                     server-error-value-ext
+        ; Unrecognized errors should be treated as "other-error".
+        ; In order to prevent information disclosure, the server
+        ; may substitute the real reason with "other-error".
+
+server-error-value-ext = value
+        ; Additional error reasons added by extensions
+        ; to this document.
+
+server-error-message = "m=" server-error-message-value
+
+server-error-message-value = 1*OCTET
+        ; Human readable error message in UTF-8
+
 # IMAP Example
 
 In IMAP, the exchange would be:
