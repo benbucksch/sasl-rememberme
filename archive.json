@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-12T00:04:40.164111+00:00",
+  "timestamp": "2025-01-16T00:04:28.177725+00:00",
   "repo": "benbucksch/sasl-rememberme",
   "labels": [
     {
@@ -99,6 +99,80 @@
               "updatedAt": "2025-01-06T15:08:31Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDONXyy286HiCg6",
+      "title": "Added initial IANA registration for SASL REMEMBERME",
+      "url": "https://github.com/benbucksch/sasl-rememberme/pull/2",
+      "state": "MERGED",
+      "author": "aamelnikov",
+      "authorAssociation": "NONE",
+      "assignees": [
+        "aamelnikov"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-01-13T13:33:20Z",
+      "updatedAt": "2025-01-13T14:38:38Z",
+      "baseRepository": "benbucksch/sasl-rememberme",
+      "baseRefName": "main",
+      "baseRefOid": "7d56455119fd578e45b77c50a85257693d356a5e",
+      "headRepository": "aamelnikov/sasl-rememberme",
+      "headRefName": "iana_registration",
+      "headRefOid": "d62d18de826696087af6371ba59a03f6e7feed06",
+      "closedAt": "2025-01-13T14:38:38Z",
+      "mergedAt": "2025-01-13T14:38:38Z",
+      "mergedBy": "benbucksch",
+      "mergeCommit": {
+        "oid": "74c5010d0beec41e27d18ee852216f6591594b5f"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDONXyy286HipqM",
+      "title": "Added ABNF for the error code and human readable error message",
+      "url": "https://github.com/benbucksch/sasl-rememberme/pull/3",
+      "state": "MERGED",
+      "author": "aamelnikov",
+      "authorAssociation": "NONE",
+      "assignees": [
+        "aamelnikov"
+      ],
+      "labels": [],
+      "body": "A proposal how to convey error code type and error message back to the client.",
+      "createdAt": "2025-01-13T14:32:35Z",
+      "updatedAt": "2025-01-13T14:37:59Z",
+      "baseRepository": "benbucksch/sasl-rememberme",
+      "baseRefName": "main",
+      "baseRefOid": "7d56455119fd578e45b77c50a85257693d356a5e",
+      "headRepository": "aamelnikov/sasl-rememberme",
+      "headRefName": "error_handling",
+      "headRefOid": "36f8d3bc312ebeafc50f7e4f770cf41eb0a90bff",
+      "closedAt": "2025-01-13T14:37:55Z",
+      "mergedAt": "2025-01-13T14:37:55Z",
+      "mergedBy": "benbucksch",
+      "mergeCommit": {
+        "oid": "e8000251f719a68c9b8cf29e5eb1ade1711f938f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDONXyy286XzV9D",
+          "commit": {
+            "abbreviatedOid": "36f8d3b"
+          },
+          "author": "benbucksch",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Thanks!",
+          "createdAt": "2025-01-13T14:37:35Z",
+          "updatedAt": "2025-01-13T14:37:35Z",
+          "comments": []
         }
       ]
     }
