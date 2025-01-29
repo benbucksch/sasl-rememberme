@@ -3,7 +3,7 @@ title: "SASL Remember Me"
 abbrev: "sasl-rememberme"
 category: info
 
-docname: draft-bucksch-sasl-rememberme-latest
+docname: draft-bucksch-sasl-rememberme-latest-00
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -22,7 +22,6 @@ venue:
   mail: kitten@ietf.org
   arch: https://mailarchive.ietf.org/arch/browse/kitten/
   github: benbucksch/sasl-rememberme
-  latest: https://example.com/LATEST
 
 author:
  -
@@ -77,34 +76,32 @@ storage.
 
 # Login using the token
 
-1. If the client needs to log in and has a token for this user and
-host, uses the SASL `REMEMBERME` mechanism to log in.
-`REMEMBERME` mechanism starts with the client sending the initial client response,
-which has the following format defined using ABNF:
+If the client needs to log in and has a token for this user and host, uses
+the SASL `REMEMBERME` mechanism to log in.  `REMEMBERME` mechanism starts
+with the client sending the initial client response, which has the following
+format defined using ABNF:
 
+~~~~ abnf
 rememberme-client-step1 = token
 token                   = 1*OCTET
+~~~~
 
-2. a. If the server accepts the response as valid and allows login,
-  it responds with a SASL success response. The user is logged in.
+If the server accepts the response as valid and allows login, it responds with
+a SASL success response. The user is logged in.  (ALTERNATIVE EXPIRY: ....  it
+responds with a SASL success response, a new token, and the expiry time of the
+new token. The user is logged in.  To avoid race conditions in clients that
+open multiple connections at the same time, the previously used token MUST be
+valid for at least 30 more seconds. Likewise, if the server returned a new
+token, then it must return the same new token in response to the same old token
+for the next 1 hour.  Reason: If the client opens 5 connections at the same
+time, using the same token, but the server were to respond with 5 different new
+tokens, and it were to allow only 1 of them, then the client would not know
+which one to store, due to race conditions in the network response.)
 
-  (ALTERNATIVE EXPIRY: ....
-  it responds with a SASL success response, a new token, and the
-  expiry time of the new token. The user is logged in.
-  To avoid race conditions in clients that open multiple
-  connections at the same time, the previously used token MUST
-  be valid for at least 30 more seconds. Likewise, if the server
-  returned a new token, then it must return the same new token
-  in response to the same old token for the next 1 hour.
-  Reason: If the client opens 5 connections at the same time,
-  using the same token, but the server were to respond with
-  5 different new tokens, and it were to allow only 1 of them,
-  then the client would not know which one to store, due to race
-  conditions in the network response.)
+If the response is invalid, the server responds with a SASL error and a
+human-readable error message for the end user.
 
-2. b. If the response is invalid, the server responds with a
-  SASL error and a human-readable error message for the end user.
-
+~~~~ abnf
 server-final-message = server-error "," server-error-message
         ; Only returned on error. Omitted on success.
 
@@ -129,17 +126,19 @@ server-error-message = "m=" server-error-message-value
 
 server-error-message-value = 1*OCTET
         ; Human readable error message in UTF-8
+~~~~
 
 # IMAP Example
 
 In IMAP, the exchange would be:
-```
+
+~~~~
 S: * OK ACME IMAP Server v1.23 is ready
 C: 22 CAPABILITY
 S: 22 CAPABILITY IMAP4rev1 IMAP4rev2 AUTH=PASSKEY AUTH=REMEMBERME
 C: 23 AUTHENTICATE REMEMBERME QUVDNjU3NjU3NjU1Nwo=
 S: 23 OK AUTHENTICATE completed
-```
+~~~~
 
 In the above example the token is "AEC6576576557" which is base64-encoded
 according to IMAP SASL profile.
@@ -171,18 +170,22 @@ TODO Security
 
 # IANA Considerations
 
-IANA is requested to add the following entries to the SASL Mechanism registry established by [RFC4422]:
+IANA is requested to add the following entries to the SASL Mechanism registry
+established by {{!RFC4422}}:
 
+~~~~
 To: iana@iana.org
 Subject: Registration of a new SASL mechanism REMEMBERME
 
 SASL mechanism name (or prefix for the family): REMEMBERME
 Security considerations: Section YY of [RFCXXXX]
 Published specification (optional, recommended): [RFCXXXX]
-Person & email address to contact for further information: IETF Kitten WG <kitten@ietf.org>
+Person & email address to contact for further information:
+    IETF Kitten WG <kitten@ietf.org>
 Intended usage: COMMON
 Owner/Change controller: IESG <iesg@ietf.org>
 Note:
+~~~~
 
 --- back
 
