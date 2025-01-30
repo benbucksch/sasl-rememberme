@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-28T00:04:11.597988+00:00",
+  "timestamp": "2025-01-30T00:04:03.102335+00:00",
   "repo": "benbucksch/sasl-rememberme",
   "labels": [
     {
@@ -175,6 +175,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 4,
+      "id": "PR_kwDONXyy286JXeWO",
+      "title": "formatting suggestions",
+      "url": "https://github.com/benbucksch/sasl-rememberme/pull/4",
+      "state": "OPEN",
+      "author": "sftcd",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This seems to build better on my machine. I'm not swearing the markdown is super-good though:-)",
+      "createdAt": "2025-01-29T13:59:47Z",
+      "updatedAt": "2025-01-29T13:59:48Z",
+      "baseRepository": "benbucksch/sasl-rememberme",
+      "baseRefName": "main",
+      "baseRefOid": "74c5010d0beec41e27d18ee852216f6591594b5f",
+      "headRepository": "sftcd/sasl-rememberme",
+      "headRefName": "formatting",
+      "headRefOid": "76e48ffaeb508d21d3ad08a36630e18e76563d90",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
