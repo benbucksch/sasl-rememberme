@@ -5,12 +5,12 @@
 kitten                                                        B. Bucksch
 Internet-Draft                                                    Beonex
 Intended status: Informational                                S. Farrell
-Expires: 17 July 2025                             Trinity College Dublin
-                                                         13 January 2025
+Expires: 4 August 2025                            Trinity College Dublin
+                                                         31 January 2025
 
 
                             SASL Remember Me
-                  draft-bucksch-sasl-rememberme-latest
+                draft-bucksch-sasl-rememberme-latest-00
 
 Abstract
 
@@ -22,10 +22,9 @@ About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-bucksch-sasl-
-   rememberme/.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-bucksch-sasl-rememberme-
+   latest/.
 
    Discussion of this document takes place on the kitten Working Group
    mailing list (mailto:kitten@ietf.org), which is archived at
@@ -50,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 July 2025.
+   This Internet-Draft will expire on 4 August 2025.
 
 Copyright Notice
 
@@ -108,16 +107,16 @@ Table of Contents
 
 3.  Login using the token
 
-   1.  If the client needs to log in and has a token for this user and
-       host, uses the SASL REMEMBERME mechanism to log in.  REMEMBERME
-       mechanism starts with the client sending the initial client
-       response, which has the following format defined using ABNF:
+   If the client needs to log in and has a token for this user and host,
+   uses the SASL REMEMBERME mechanism to log in.  REMEMBERME mechanism
+   starts with the client sending the initial client response, which has
+   the following format defined using ABNF:
 
-   rememberme-client-step1 = token token = 1*OCTET
+   rememberme-client-step1 = token
+   token                   = 1*OCTET
 
-   1.  a.  If the server accepts the response as valid and allows login,
-       it responds with a SASL success response.  The user is logged in.
-
+   If the server accepts the response as valid and allows login, it
+   responds with a SASL success response.  The user is logged in.
    (ALTERNATIVE EXPIRY: ....  it responds with a SASL success response,
    a new token, and the expiry time of the new token.  The user is
    logged in.  To avoid race conditions in clients that open multiple
@@ -130,35 +129,43 @@ Table of Contents
    only 1 of them, then the client would not know which one to store,
    due to race conditions in the network response.)
 
-   1.  b.  If the response is invalid, the server responds with a SASL
-       error and a human-readable error message for the end user.
+   If the response is invalid, the server responds with a SASL error and
+   a human-readable error message for the end user.
 
-   server-final-message = server-error "," server-error-message ; Only
-   returned on error.  Omitted on success.
+   server-final-message = server-error "," server-error-message
+           ; Only returned on error. Omitted on success.
 
    server-error = "e=" server-error-value
 
-   server-error-value = "invalid-encoding" / "unknown-user" / "invalid-
-   username-encoding" / ; invalid username encoding (invalid UTF-8 or ;
-   SASLprep failed) "other-error" / server-error-value-ext ;
-   Unrecognized errors should be treated as "other-error".  ; In order
-   to prevent information disclosure, the server ; may substitute the
-   real reason with "other-error".
+   server-error-value = "invalid-encoding" /
+                        "unknown-user" /
+                        "invalid-username-encoding" /
+                          ; invalid username encoding (invalid UTF-8 or
+                          ; SASLprep failed)
+                        "other-error" /
+                        server-error-value-ext
+           ; Unrecognized errors should be treated as "other-error".
+           ; In order to prevent information disclosure, the server
+           ; may substitute the real reason with "other-error".
 
-   server-error-value-ext = value ; Additional error reasons added by
-   extensions ; to this document.
+   server-error-value-ext = value
+           ; Additional error reasons added by extensions
+           ; to this document.
 
    server-error-message = "m=" server-error-message-value
 
-   server-error-message-value = 1*OCTET ; Human readable error message
-   in UTF-8
+   server-error-message-value = 1*OCTET
+           ; Human readable error message in UTF-8
 
 4.  IMAP Example
 
-   In IMAP, the exchange would be: S: * OK ACME IMAP Server v1.23 is
-   ready C: 22 CAPABILITY S: 22 CAPABILITY IMAP4rev1 IMAP4rev2
-   AUTH=PASSKEY AUTH=REMEMBERME C: 23 AUTHENTICATE REMEMBERME
-   QUVDNjU3NjU3NjU1Nwo= S: 23 OK AUTHENTICATE completed
+   In IMAP, the exchange would be:
+
+   S: * OK ACME IMAP Server v1.23 is ready
+   C: 22 CAPABILITY
+   S: 22 CAPABILITY IMAP4rev1 IMAP4rev2 AUTH=PASSKEY AUTH=REMEMBERME
+   C: 23 AUTHENTICATE REMEMBERME QUVDNjU3NjU3NjU1Nwo=
+   S: 23 OK AUTHENTICATE completed
 
    In the above example the token is "AEC6576576557" which is
    base64-encoded according to IMAP SASL profile.
@@ -198,15 +205,17 @@ Table of Contents
    IANA is requested to add the following entries to the SASL Mechanism
    registry established by [RFC4422]:
 
-   To: iana@iana.org Subject: Registration of a new SASL mechanism
-   REMEMBERME
+   To: iana@iana.org
+   Subject: Registration of a new SASL mechanism REMEMBERME
 
-   SASL mechanism name (or prefix for the family): REMEMBERME Security
-   considerations: Section YY of [RFCXXXX] Published specification
-   (optional, recommended): [RFCXXXX] Person & email address to contact
-   for further information: IETF Kitten WG kitten@ietf.org
-   (mailto:kitten@ietf.org) Intended usage: COMMON Owner/Change
-   controller: IESG iesg@ietf.org (mailto:iesg@ietf.org) Note:
+   SASL mechanism name (or prefix for the family): REMEMBERME
+   Security considerations: Section YY of [RFCXXXX]
+   Published specification (optional, recommended): [RFCXXXX]
+   Person & email address to contact for further information:
+       IETF Kitten WG <kitten@ietf.org>
+   Intended usage: COMMON
+   Owner/Change controller: IESG <iesg@ietf.org>
+   Note:
 
 9.  Normative References
 
@@ -214,6 +223,11 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC4422]  Melnikov, A., Ed. and K. Zeilenga, Ed., "Simple
+              Authentication and Security Layer (SASL)", RFC 4422,
+              DOI 10.17487/RFC4422, June 2006,
+              <https://www.rfc-editor.org/rfc/rfc4422>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
