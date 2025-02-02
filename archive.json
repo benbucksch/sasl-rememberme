@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T00:04:03.102335+00:00",
+  "timestamp": "2025-02-02T00:04:11.540037+00:00",
   "repo": "benbucksch/sasl-rememberme",
   "labels": [
     {
@@ -181,26 +181,84 @@
       "id": "PR_kwDONXyy286JXeWO",
       "title": "formatting suggestions",
       "url": "https://github.com/benbucksch/sasl-rememberme/pull/4",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "sftcd",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "This seems to build better on my machine. I'm not swearing the markdown is super-good though:-)",
       "createdAt": "2025-01-29T13:59:47Z",
-      "updatedAt": "2025-01-29T13:59:48Z",
+      "updatedAt": "2025-01-31T13:04:34Z",
       "baseRepository": "benbucksch/sasl-rememberme",
       "baseRefName": "main",
       "baseRefOid": "74c5010d0beec41e27d18ee852216f6591594b5f",
       "headRepository": "sftcd/sasl-rememberme",
       "headRefName": "formatting",
       "headRefOid": "76e48ffaeb508d21d3ad08a36630e18e76563d90",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-01-31T13:04:34Z",
+      "mergedAt": "2025-01-31T13:04:34Z",
+      "mergedBy": "benbucksch",
+      "mergeCommit": {
+        "oid": "7f67fa4e3b15b3a2de68bed9223974d1b331fbd4"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDONXyy286aLXQ6",
+          "commit": {
+            "abbreviatedOid": "76e48ff"
+          },
+          "author": "benbucksch",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-31T13:04:22Z",
+          "updatedAt": "2025-01-31T13:04:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDONXyy286Jqetn",
+      "title": "Moarformat",
+      "url": "https://github.com/benbucksch/sasl-rememberme/pull/5",
+      "state": "MERGED",
+      "author": "sftcd",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "one more tweak discovered when playing with toolchain",
+      "createdAt": "2025-01-31T16:27:49Z",
+      "updatedAt": "2025-01-31T17:02:55Z",
+      "baseRepository": "benbucksch/sasl-rememberme",
+      "baseRefName": "main",
+      "baseRefOid": "7f67fa4e3b15b3a2de68bed9223974d1b331fbd4",
+      "headRepository": "sftcd/sasl-rememberme",
+      "headRefName": "moarformat",
+      "headRefOid": "7bda65c2e6c1b9c6ce07d51a584e3984d873d701",
+      "closedAt": "2025-01-31T17:02:55Z",
+      "mergedAt": "2025-01-31T17:02:55Z",
+      "mergedBy": "benbucksch",
+      "mergeCommit": {
+        "oid": "e8cfceccffa62c904f70e07d4b366a6a63cba368"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDONXyy286aNzMY",
+          "commit": {
+            "abbreviatedOid": "7bda65c"
+          },
+          "author": "benbucksch",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-31T17:02:41Z",
+          "updatedAt": "2025-01-31T17:02:41Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
