@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-04T00:04:07.314696+00:00",
+  "timestamp": "2025-02-06T00:04:17.139434+00:00",
   "repo": "benbucksch/sasl-rememberme",
   "labels": [
     {
@@ -259,6 +259,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDONXyy286KJhOe",
+      "title": "Fixed IMAP CAPABILITY in the example",
+      "url": "https://github.com/benbucksch/sasl-rememberme/pull/6",
+      "state": "OPEN",
+      "author": "aamelnikov",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Capabilities are listed in the untagged CAPABILITY response, not in the tagged OK.",
+      "createdAt": "2025-02-05T14:23:31Z",
+      "updatedAt": "2025-02-05T14:23:32Z",
+      "baseRepository": "benbucksch/sasl-rememberme",
+      "baseRefName": "main",
+      "baseRefOid": "e8cfceccffa62c904f70e07d4b366a6a63cba368",
+      "headRepository": "aamelnikov/sasl-rememberme",
+      "headRefName": "imap_capability",
+      "headRefOid": "bf801505607ee3de3ca74e829d9d9c45f5995be5",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
