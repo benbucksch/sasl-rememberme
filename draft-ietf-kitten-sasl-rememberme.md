@@ -3,7 +3,7 @@ title: "SASL Remember Me"
 abbrev: "sasl-rememberme"
 category: info
 
-docname: draft-ietf-kitten-sasl-rememberme-latest-00
+docname: draft-ietf-kitten-sasl-rememberme-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
