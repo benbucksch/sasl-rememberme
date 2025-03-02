@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-27T00:04:21.082931+00:00",
+  "timestamp": "2025-03-02T00:04:09.734369+00:00",
   "repo": "benbucksch/sasl-rememberme",
   "labels": [
     {
@@ -183,7 +183,7 @@
       "url": "https://github.com/benbucksch/sasl-rememberme/pull/4",
       "state": "MERGED",
       "author": "sftcd",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This seems to build better on my machine. I'm not swearing the markdown is super-good though:-)",
@@ -225,7 +225,7 @@
       "url": "https://github.com/benbucksch/sasl-rememberme/pull/5",
       "state": "MERGED",
       "author": "sftcd",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "one more tweak discovered when playing with toolchain",
